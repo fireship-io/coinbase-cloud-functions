@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Coinbase Demo</title>
+</head>
+<body>  
+
+    <button id="btn">Buy Something with Crypto</button>
+
+    <p id="pay"></p>
+    
+
+    <script>
+        const btn = document.getElementById('btn');
+        const pay = document.getElementById('pay');
+
+        btn.onclick = async() => {
+            const res = await fetch('http://localhost:5000/fireship-demos/us-central1/createCharge');
+            const data = await res.json();
+
+            console.log(data);
+
+            pay.innerHTML = `<a href="${data.hosted_url}">Pay Now!</a>`
+        }
+    </script>
+</body>
+</html>
